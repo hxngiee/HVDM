@@ -1,0 +1,374 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>HVDM</title>
+<link href="./config_files/style.css" rel="stylesheet">
+
+
+<style>
+  p.serif{
+    font-family:"Times New Roman", Times, serif;
+  }
+  p.sansserif{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+</style>
+  
+</head>
+
+<body>
+<div class="content">
+  <h1><strong>HVDM: Hybrid Video Diffusion Models with 2D Triplane and 3D Wavelet Representation</strong></h1>
+  <p id="authors" class="serif">
+    <span style="font-size: 0.8em">
+      link the profile!!!
+      Kihong Kim<sup>1</sup></a>
+      Haneol Lee<sup>2</sup></a>
+      Jihye Park<sup>3</sup></a>
+      Seyeon Kim<sup>3</sup></a>
+      Kwanghee Lee<sup>1</sup></a>
+      Seungryong Kim<sup>3&dagger;</sup></a>
+      Jaejun Yoo<sup>2&dagger;</sup></a>
+    </span>
+    <br>
+    <a style="font-size: 0.7em; color: black;"><sup>&dagger;</sup>Corresponding Author</a>
+    <br>
+    <span style="font-size: 0.8em; margin-top: 0.5em">
+      <a style="color: black;"><sup>1</sup>VIVE STUDIOS</a>
+      <a style="color: black;"><sup>2</sup>UNIST</a>
+      <a style="color: black;"><sup>3</sup>Korea University</a>
+    </span>
+  </p>
+
+  <font size="+1">
+    <p style="text-align: center;" class="sansserif">
+      <a href="https://arxiv.org/pdf/2402.13729.pdf" target="" style="font-weight: bold; color: black;">[Paper]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://github.com/hxngiee/HVDM" target="" style="font-weight: bold; color: black;">[Code]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    </p><br>
+  </font>
+</div>
+
+
+<div class="content">
+  <p style="text-align:center; font-size: 2em; font-weight: bold" class="sansserif">Abstract</p>
+  <p style="font-size: 1.2em; margin-left:5em; margin-right:5em;" class="serif">
+    Generating high-quality videos that synthesize desired realistic content is a challenging task due to their intricate high dimensionality and complexity. Several recent diffusion-based methods have shown comparable performance by compressing videos to a lower-dimensional latent space, using traditional video autoencoder architecture. However, such method that employ standard frame-wise 2D or 3D convolution fail to fully exploit the spatio-temporal nature of videos. To address this issue, we propose a novel hybrid video diffusion model, called HVDM, which can capture spatio-temporal dependencies more effectively. HVDM is trained by a hybrid video autoencoder which extracts a disentangled representation of the video including: (i) a global context information captured by a 2D projected latent, (ii) a local volume information captured by 3D convolutions with wavelet decomposition, and (iii) a frequency information for improving the video reconstruction. Based on this disentangled representation, our hybrid autoencoder provide a more comprehensive video latent enriching the generated videos with fine structures and details. Experiments on standard video generation benchmarks such as UCF101, SkyTimelapse, and TaiChi demonstrate that the proposed approach achieves state-of-the-art video generation quality, showing a wide range of video applications (e.g., long video generation, image-to-video, and video dynamics control).
+  </p>
+
+</div>
+
+<!--Overall illustration of our projected latent video diffusion model (PVDM) framework-->
+<div class="content">
+  <p style="text-align:center; font-size: 2em; font-weight: bold" class="sansserif">Overall architecture of our hybrid video autoencoder (HVDM)</p>
+  <div style="text-align:center;">
+    <img src="assets/AE-framework.png" width="100%">
+  </div>
+
+  <br>
+
+  <p style="text-align:center; font-size: 2em; font-weight: bold" class="sansserif">Diverse latent video diffusion models </p>
+  <div style="text-align:center;">
+    <img src="assets/DM-framework.png" width="100%">
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="content">
+  <p style="text-align:center; font-size: 2em; font-weight: bold" class="sansserif">Main Results</p>
+  <!-- <p style="text-align:center; font-size: 1.2em; color: orangered" class="serif"><i><b>Click to Play the Videos</b></i></p> -->
+  
+  <p style="font-size: 1.25em" class="serif"><b style="font-size: 1.3em;">Short Video Generation</b></p>
+
+  <div class="row">
+    <div class="row">
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/main_results/ytb_stylegan_v_concat.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>StyleGAN-V</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/main_results/ytb_stylesv_concat.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>LVDM</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/main_results/ytb_stylesv_mtm_concat.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>PVDM</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/main_results/ytb_gendef_concat.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>HVDM</b></p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <p style="font-size: 1.25em" class="serif"><b style="font-size: 1.3em;">Long Video Generation</b></p>
+
+  <div class="row">
+    <div class="row">
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/main_results/sky_stylegan_v_concat.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>StyleGAN-V</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/main_results/sky_stylesv_concat.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>LVDM</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/main_results/sky_stylesv_mtm_concat.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>PVDM</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/main_results/sky_gendef_concat.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>HVDM</b></p>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="content">
+  <p style="text-align:center; font-size: 2em; font-weight: bold" class="sansserif">Applications</p>
+  <!-- <p style="text-align:center; font-size: 1.2em; color: orangered" class="serif"><i><b>Click to Play the Videos</b></i></p> -->
+
+  <p style="font-size: 1.25em" class="serif"><b style="font-size: 1.3em;">Image-to-Video</b></p>
+  <div class="row">
+
+    <div class="row">
+      <div class="col-gallery" style="text-align:center;">
+        <img src="assets/videos/applications/edit_scribble_canonical.png" style="width: 75%; border: 1px solid #000000;">
+        <p style="text-align: center; margin-top: 0; width: 100%;"><b>Image (Origin)</b></p>
+      </div>
+
+
+      <div class="col-gallery" style="text-align:center;">
+        <img src="assets/videos/applications/edit_scribble_canonical_edited.png" style="width: 75%; border: 1px solid #000000;">
+        <p style="text-align: center; margin-top: 0; width: 100%;"><b>Video (Generated)</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/applications/edit_scribble_video.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>Image (Origin)</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/applications/edit_scribble_video_edited.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>Video (Generated)</b></p>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-gallery" style="text-align:center;">
+        <img src="assets/videos/applications/edit_robot_canonical.png" style="width: 75%; border: 1px solid #000000;">
+        <p style="text-align: center; margin-top: 0; width: 100%;"><b>Image (Origin)</b></p>
+      </div>
+
+
+      <div class="col-gallery" style="text-align:center;">
+        <img src="assets/videos/applications/edit_robot_canonical_edited.png" style="width: 75%; border: 1px solid #000000;">
+        <p style="text-align: center; margin-top: 0; width: 100%;"><b>Video (Generated)</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/applications/edit_robot_video.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>Image (Origin)</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/applications/edit_robot_video_edited.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>Video (Generated)</b></p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <p style="font-size: 1.25em" class="serif"><b style="font-size: 1.3em;">Video Dynamics Control</b></p>
+  <div class="row">
+
+    <div class="row">
+      <div class="col-gallery" style="text-align:center;">
+        <img src="assets/videos/applications/edit_scribble_canonical.png" style="width: 75%; border: 1px solid #000000;">
+        <p style="text-align: center; margin-top: 0; width: 100%;"><b>Canonical (Origin)</b></p>
+      </div>
+
+
+      <div class="col-gallery" style="text-align:center;">
+        <img src="assets/videos/applications/edit_scribble_canonical_edited.png" style="width: 75%; border: 1px solid #000000;">
+        <p style="text-align: center; margin-top: 0; width: 100%;"><b>Canonical (Edited)</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/applications/edit_scribble_video.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>Video (Origin)</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/applications/edit_scribble_video_edited.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>Video (Edited)</b></p>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-gallery" style="text-align:center;">
+        <img src="assets/videos/applications/edit_robot_canonical.png" style="width: 75%; border: 1px solid #000000;">
+        <p style="text-align: center; margin-top: 0; width: 100%;"><b>Canonical (Origin)</b></p>
+      </div>
+
+
+      <div class="col-gallery" style="text-align:center;">
+        <img src="assets/videos/applications/edit_robot_canonical_edited.png" style="width: 75%; border: 1px solid #000000;">
+        <p style="text-align: center; margin-top: 0; width: 100%;"><b>Canonical (Edited)</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/applications/edit_robot_video.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>Video (Origin)</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/applications/edit_robot_video_edited.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>Video (Edited)</b></p>
+      </div>
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col-gallery" style="text-align:center;">
+        <img src="assets/videos/applications/edit_style_canonical.png" style="width: 75%; border: 1px solid #000000;">
+        <p style="text-align: center; margin-top: 0; width: 100%;"><b>Canonical (Origin)</b></p>
+      </div>
+
+
+      <div class="col-gallery" style="text-align:center;">
+        <img src="assets/videos/applications/edit_style_canonical_edited.png" style="width: 75%; border: 1px solid #000000;">
+        <p style="text-align: center; margin-top: 0; width: 100%;"><b>Canonical (Edited)</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/applications/edit_style_video.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>Video (Origin)</b></p>
+      </div>
+
+      <div class="col-gallery" style="text-align:center;">
+        <video autoplay muted width="75%" loop>
+          <source src="assets/videos/applications/edit_style_video_edited.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 0;"><b>Video (Edited)</b></p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+
+
+
+<div class="content" id="bibtex">
+  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">BibTeX</p>
+  <code>
+  @article{kim2024hybrid,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;title={Hybrid Video Diffusion Models with 2D Triplane and 3D Wavelet Representation},<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;author={Kim, Kihong and Lee, Haneol and Park, Jihye and Kim, Seyeon and Lee, Kwanghee and Kim, Seungryong and Yoo, Jaejun},<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;year={2024},<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;eprint={2402.13729},<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;archivePrefix={arXiv},<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;primaryClass={cs.CV}<br>
+  }
+  </code>
+</div>
+
+<div class="content">
+  <p class="serif">
+    Project page template is borrowed from <a href="https://dreambooth.github.io/">DreamBooth</a>.
+  </p>
+</div>
+
+</body>
+
+<script>
+  var videos = document.getElementsByClassName("clickplay");
+  for (var i = 0; i < videos.length; i++) {
+    videos[i].addEventListener("click", function() {
+      this.play();
+    });
+    videos[i].addEventListener("ended", function() {
+      this.pause();
+      this.currentTime = 0;
+    });
+  }
+</script>
+
+</html>
