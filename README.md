@@ -72,7 +72,7 @@ This script will automatically save logs and checkpoints in `./results` folder.
 ```
 
 ### 4. Inference 
-We are currently working on incorporating code for Image2Video and Video Dynamics Control. Also the model checkpoints will be released soon.
+The pretrained model checkpoints can be accessed through this [link](https://drive.google.com/drive/folders/1dkbF5RNSgP_eOJAOBUeUTpCoLDvhkHNW?usp=drive_link)
 
 #### Short Video Generation
 ```bash
